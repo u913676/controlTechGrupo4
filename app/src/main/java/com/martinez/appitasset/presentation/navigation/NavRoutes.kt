@@ -7,6 +7,7 @@ object NavRoutes {
     const val REGISTER = "registerRoute"
     const val HISTORY = "historyRoute"
     const val PROFILE = "profileRoute"
+    const val VIEW = "viewRoute"
 
     fun getTitle(route: String?): String {
         return when {
@@ -15,6 +16,7 @@ object NavRoutes {
             route == REGISTER -> "ControlTech"
             route == HISTORY -> "ControlTech"
             route == PROFILE -> "ControlTech"
+            route?.startsWith(VIEW) == true -> "ControlTech"
             else -> "ControlTech"
         }
     }

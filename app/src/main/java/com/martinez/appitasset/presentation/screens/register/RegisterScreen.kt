@@ -30,13 +30,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 
 import com.martinez.appitasset.di.AppContainer
 import com.martinez.appitasset.presentation.components.RegisterForm
 
 
 @Composable
-fun RegisterScreen(container: AppContainer) {
+fun RegisterScreen(container: AppContainer, navHostController: NavHostController) {
     val viewModel = container.registerViewModel
     val uiState by viewModel.uiState.collectAsState()
 
