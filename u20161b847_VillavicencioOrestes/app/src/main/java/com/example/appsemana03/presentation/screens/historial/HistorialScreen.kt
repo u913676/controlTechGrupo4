@@ -62,14 +62,15 @@ fun HistorialScreen(container: AppContainer) {
         Box(
             modifier = Modifier
                 .clip(RoundedCornerShape(6.dp))
-                .background(Color(0xFFEEEEEE))
+                .background(Color(0xFFEAEEFB))
                 .padding(horizontal = 8.dp, vertical = 3.dp)
         ) {
             Text(
                 text = "DEVICE HISTORY",
                 fontSize = 10.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF757575),
+                color = Color(0xFF3949AB),
+                fontFamily = FontFamily.Monospace,
                 letterSpacing = 1.sp
             )
         }
@@ -80,7 +81,7 @@ fun HistorialScreen(container: AppContainer) {
             text = uiState.nombreEquipo,
             fontSize = 26.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF212121),
+            color = Color(0xFF0F172A),
             lineHeight = 30.sp
         )
 
@@ -108,7 +109,7 @@ fun HistorialScreen(container: AppContainer) {
         Box(
             modifier = Modifier
                 .clip(RoundedCornerShape(50))
-                .background(Color(0xFF2196F3))
+                .background(Color(0xFF3B82F6))
                 .padding(horizontal = 12.dp, vertical = 5.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -205,7 +206,9 @@ private fun EventoTimelineItem(evento: EventoHistorial, isLast: Boolean) {
                     Text(
                         text = evento.fecha,
                         fontSize = 11.sp,
-                        color = Color(0xFF9E9E9E)
+                        fontFamily = FontFamily.Monospace,
+                        fontWeight = FontWeight.SemiBold,
+                        color = color
                     )
                 }
                 Spacer(modifier = Modifier.height(8.dp))
@@ -223,7 +226,7 @@ private fun EventoTimelineItem(evento: EventoHistorial, isLast: Boolean) {
                 Text(
                     text = evento.descripcion,
                     fontSize = 12.sp,
-                    color = Color(0xFF757575),
+                    color = Color(0xFF475569),
                     lineHeight = 17.sp
                 )
             }

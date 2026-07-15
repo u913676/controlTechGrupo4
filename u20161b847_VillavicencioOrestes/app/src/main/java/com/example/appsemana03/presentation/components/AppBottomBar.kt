@@ -6,6 +6,8 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -16,16 +18,14 @@ import com.example.appsemana03.core.navigation.BotonNavItem
 @Composable
 fun AppBottomBar(navHostController: NavHostController) {
     val opciones = listOf(
-        BotonNavItem.Inicio,
-        BotonNavItem.Listar,
-        BotonNavItem.Buscar,
         BotonNavItem.Asignar,
         BotonNavItem.Historial
     )
 
     NavigationBar(
-        containerColor = Color(0xFF4F8FEF),
-        tonalElevation = 8.dp
+        modifier = Modifier.shadow(elevation = 8.dp),
+        containerColor = Color.White,
+        tonalElevation = 0.dp
     ) {
         val rutaSel = navHostController
             .currentBackStackEntryAsState()
@@ -57,12 +57,12 @@ fun AppBottomBar(navHostController: NavHostController) {
                 },
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = Color.White,
-                    selectedTextColor = Color.White,
+                    selectedTextColor = Color(0xFF1A1A1A),
 
-                    unselectedIconColor = Color(0xFFE3EEFF),
-                    unselectedTextColor = Color(0xFFE3EEFF),
+                    unselectedIconColor = Color(0xFF1A1A1A),
+                    unselectedTextColor = Color(0xFF1A1A1A),
 
-                    indicatorColor = Color(0xFF304FC4)
+                    indicatorColor = Color(0xFF2D8CFF)
                 )
             )
         }

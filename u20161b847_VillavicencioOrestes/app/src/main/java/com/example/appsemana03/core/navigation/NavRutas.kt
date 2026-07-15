@@ -11,13 +11,13 @@ object NavRutas {
 
     fun getTitulo(ruta:String?):String{
         return when{
-            ruta == INICIO -> "App Biblioteca"
+            ruta == INICIO -> "ControlTech"
             ruta == AGREGAR -> "Nuevo Libro"
             ruta?.startsWith(EDITAR) ==  true -> "Editar Libro"
             ruta?.startsWith(BUSCAR) ==  true -> "Buscar Libro"
             ruta == ASIGNAR -> "Asignar equipo"
             ruta == HISTORIAL -> "Historial del Equipo"
-            else -> "App Biblioteca"
+            else -> "ControlTech"
         }
     }
 }
