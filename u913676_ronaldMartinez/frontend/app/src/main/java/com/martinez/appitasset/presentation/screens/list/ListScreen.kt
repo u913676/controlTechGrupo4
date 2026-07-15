@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,6 +26,11 @@ fun ListScreen(container: AppContainer, navHostController: NavHostController) {
     val viewModel = container.listViewModel
     val uiState by viewModel.uiState.collectAsState()
     var selectedItem by remember { mutableStateOf<ITAssetModel?>(null) }
+
+    // 👉 refrescar cada vez que entras
+    LaunchedEffect(Unit) {
+        viewModel.loadItems()
+    }
 
     if(uiState.isLoading){
         LoadingScreen()

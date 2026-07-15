@@ -85,6 +85,7 @@ class RegisterViewModel(private val useCases: ITAssetUseCases) : ViewModel() {
                     isLoading = false,
                     isSuccess = true
                 )
+
                 EventBus.send(UiEvent.Success("Equipo registrado correctamente"))
             }catch (e: Exception){
                 println("onSaveData.e.Exception: ${e.message}")
