@@ -3,6 +3,7 @@ package com.example.appsemana03.presentation.screens.historial
 data class EventoHistorial(
     val tipo: String,
     val fecha: String,
+    val fechaOrden: String, // ISO yyyy-MM-dd, usada para ordenar cronológicamente
     val responsable: String,
     val descripcion: String
 )

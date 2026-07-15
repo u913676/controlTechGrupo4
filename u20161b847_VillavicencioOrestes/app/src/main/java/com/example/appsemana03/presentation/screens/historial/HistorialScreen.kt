@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Inventory
 import androidx.compose.material.icons.filled.Inventory2
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.QrCode2
@@ -44,7 +45,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appsemana03.di.AppContainer
-import com.example.appsemana03.presentation.screens.historial.EventoHistorial
 
 @Composable
 fun HistorialScreen(container: AppContainer) {
@@ -131,7 +131,45 @@ fun HistorialScreen(container: AppContainer) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // ---------- Timeline ----------
+        // ---------- Cabecera de la línea de tiempo + indicador de solo lectura ----------
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "LÍNEA DE TIEMPO",
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF9E9E9E),
+                letterSpacing = 1.sp
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Row(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(50))
+                    .background(Color(0xFFEEEEEE))
+                    .padding(horizontal = 8.dp, vertical = 3.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = null,
+                    tint = Color(0xFF757575),
+                    modifier = Modifier.size(12.dp)
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "Solo lectura",
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xFF757575)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // ---------- Timeline (solo lectura, orden descendente) ----------
         uiState.eventos.forEachIndexed { index, evento ->
             EventoTimelineItem(
                 evento = evento,

@@ -6,7 +6,7 @@ data class AsignarUiState(
     val especificaciones: String = "32GB RAM · 1TB SSD · Silver",
     val estadoEquipo: String = "Disponible",
     val destinatario: String = "",
-    val fechaEntrega: String = "14/07/2026",
+    val fechaEntrega: String = "",
     val detalles: String = "",
     val isLoading: Boolean = false,
     val isSuccess: Boolean = false,

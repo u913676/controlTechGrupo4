@@ -8,9 +8,15 @@ import com.example.appsemana03.presentation.screens.asignar.AsignarUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
+private fun fechaHoy(): String =
+    SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
 
 class AsignarViewModel() : ViewModel() {
-    private val _uiState = MutableStateFlow(value = AsignarUiState())
+    private val _uiState = MutableStateFlow(value = AsignarUiState(fechaEntrega = fechaHoy()))
     val uiState = _uiState.asStateFlow()
 
     fun onDestinatarioChange(valor: String){
@@ -30,8 +36,16 @@ class AsignarViewModel() : ViewModel() {
             if(!validarFormulario()){
                 return@launch
             }
-            _uiState.value = uiState.value.copy(estadoEquipo = "Asignado")
-            EventBus.send(UiEvent.Success("Equipo asignado. Se notificó por correo a ${_uiState.value.destinatario}"))
+            val destinatario = _uiState.value.destinatario
+            // Criterio 3: el estado cambia automáticamente a "Asignado" (se refleja en la card)
+            // y luego se limpia el formulario.
+            _uiState.value = uiState.value.copy(
+                estadoEquipo = "Asignado",
+                destinatario = "",
+                fechaEntrega = fechaHoy(),
+                detalles = ""
+            )
+            EventBus.send(UiEvent.Success("Equipo asignado. Se notificó por correo a $destinatario"))
         }
     }
 
