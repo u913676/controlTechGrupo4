@@ -298,6 +298,7 @@ private fun Avatar(name: String) {
 
 private fun colorPorTipo(tipo: String): Color {
     return when (tipo) {
+        "Disponible" -> Color(0xFF2E7D32)
         "Devuelto" -> Color(0xFF1A237E)
         "Asignado" -> Color(0xFF3F51B5)
         "Reparación" -> Color(0xFFD32F2F)
@@ -309,6 +310,7 @@ private fun colorPorTipo(tipo: String): Color {
 
 private fun iconoPorTipo(tipo: String): ImageVector {
     return when (tipo) {
+        "Disponible" -> Icons.Default.CheckCircle
         "Devuelto" -> Icons.AutoMirrored.Filled.ArrowBack
         "Asignado" -> Icons.Default.Person
         "Reparación" -> Icons.Default.Build

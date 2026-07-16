@@ -13,7 +13,9 @@ import com.example.appsemana03.presentation.screens.inicio.InicioScreen
 import com.example.appsemana03.presentation.screens.listar.ListarScreen
 import com.example.appsemana03.presentation.screens.agregar.AgregarScreen
 import com.example.appsemana03.presentation.screens.asignar.AsignarScreen
+import com.example.appsemana03.presentation.screens.asignar.AsignarListaScreen
 import com.example.appsemana03.presentation.screens.historial.HistorialScreen
+import com.example.appsemana03.presentation.screens.historial.HistorialListaScreen
 
 @Composable
 fun AppNavigation(
@@ -38,9 +40,21 @@ fun AppNavigation(
             BuscarScreen(container)
         }
         composable(NavRutas.ASIGNAR){
-            AsignarScreen(container)
+            AsignarListaScreen(container, onIrAlFormulario = {
+                navHostController.navigate(NavRutas.ASIGNAR_FORM)
+            })
+        }
+        composable(NavRutas.ASIGNAR_FORM){
+            AsignarScreen(container, onAsignado = {
+                navHostController.popBackStack()
+            })
         }
         composable(NavRutas.HISTORIAL){
+            HistorialListaScreen(container, onVerDetalle = {
+                navHostController.navigate(NavRutas.HISTORIAL_DETALLE)
+            })
+        }
+        composable(NavRutas.HISTORIAL_DETALLE){
             HistorialScreen(container)
         }
     }

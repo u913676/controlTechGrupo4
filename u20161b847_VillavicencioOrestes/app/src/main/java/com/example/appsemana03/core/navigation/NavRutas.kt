@@ -7,7 +7,9 @@ object NavRutas {
     const val LISTAR  = "listar"
     const val BUSCAR  = "buscar"
     const val ASIGNAR  = "asignar"
+    const val ASIGNAR_FORM  = "asignar_form"
     const val HISTORIAL  = "historial"
+    const val HISTORIAL_DETALLE  = "historial_detalle"
 
     fun getTitulo(ruta:String?):String{
         return when{
@@ -15,8 +17,10 @@ object NavRutas {
             ruta == AGREGAR -> "Nuevo Libro"
             ruta?.startsWith(EDITAR) ==  true -> "Editar Libro"
             ruta?.startsWith(BUSCAR) ==  true -> "Buscar Libro"
-            ruta == ASIGNAR -> "Asignar equipo"
-            ruta == HISTORIAL -> "Historial del Equipo"
+            ruta == ASIGNAR -> "Equipos para asignar"
+            ruta == ASIGNAR_FORM -> "Asignar equipo"
+            ruta == HISTORIAL -> "Historial de Equipos"
+            ruta == HISTORIAL_DETALLE -> "Historial del Equipo"
             else -> "ControlTech"
         }
     }

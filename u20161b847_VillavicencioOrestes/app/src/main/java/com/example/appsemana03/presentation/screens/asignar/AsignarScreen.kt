@@ -46,7 +46,7 @@ import androidx.compose.ui.unit.sp
 import com.example.appsemana03.di.AppContainer
 
 @Composable
-fun AsignarScreen(container: AppContainer) {
+fun AsignarScreen(container: AppContainer, onAsignado: () -> Unit) {
     val viewModel = container.asignarViewModel
     val uiState by viewModel.uiState.collectAsState()
 
@@ -213,7 +213,7 @@ fun AsignarScreen(container: AppContainer) {
                 .fillMaxWidth()
                 .height(52.dp),
             shape = RoundedCornerShape(10.dp),
-            onClick = { viewModel.confirmarAsignacion() },
+            onClick = { viewModel.confirmarAsignacion(onExito = onAsignado) },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF1A237E),
                 contentColor = Color(0xFFFFFFFF)
